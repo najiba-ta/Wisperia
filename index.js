@@ -33,7 +33,8 @@ async function run() {
     await client.connect();
     const db = client.db("wisperia");
     const subscriptionsCollection = db.collection('subscriptions');
-    const userCollection = db.collection('user')
+    const userCollection = db.collection('user');
+    const lessonCollection = db.collection('lesson');
 
     app.post('/subscriptions',async (req,res)=>{
       const {sessionId,userId,priceId,userEmail} = req.body
@@ -41,7 +42,7 @@ async function run() {
       if(isExist){
         return res.json("Already Exist")
       }
-      const result = subscriptionsCollection.insertOne({
+      const result =await subscriptionsCollection.insertOne({
         sessionId,
         userEmail,
         userId,
@@ -51,12 +52,17 @@ async function run() {
       // update user role
      const userRes = await userCollection.updateOne(
         {_id: new ObjectId(userId)},
-        {$set:{role:"premium"}}
+        {$set:{plan:"premium"}}
     );
     console.log(userRes);
      res.json({msg:"Payment Successful!"})
     })
 
+    app.post('/user/add-lesson',async (req,res)=>{
+      const data = req.body
+      const result = await lessonCollection.insertOne(data);
+      res.send(result)
+    })
  
 
     await client.db("admin").command({ ping: 1 });
