@@ -6,7 +6,7 @@ const dontenv = require("dotenv");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
-const { createRemoteJWKSet, jwtVerify } = require("jose-cjs");
+const { createRemoteJWKSet, jwtVerify } = require('jose-cjs');
 dontenv.config();
 
 const uri = process.env.MONGODB_URI;
