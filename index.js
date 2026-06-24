@@ -111,7 +111,7 @@ app.use(
 
 
 const generalLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
+  windowMs: 15 * 60 * 1000, 
   limit: 300, 
   standardHeaders: true,
   legacyHeaders: false,
