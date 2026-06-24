@@ -101,7 +101,7 @@ app.post(
   },
 );
 
-// Configure general middlewares
+
 app.use(
   cors({
     credentials: true,
