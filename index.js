@@ -109,13 +109,10 @@ app.use(
   }),
 );
 
-// SECURITY: basic rate limiting to slow down comment/report/like spam and
-// brute-force-style abuse. Applied to all routes registered after this line
-// (the Stripe webhook above is intentionally excluded, since Stripe's own
-// retry behavior should not be throttled).
+
 const generalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  limit: 300, // generous ceiling for normal browsing/dashboard usage
+  limit: 300, 
   standardHeaders: true,
   legacyHeaders: false,
 });
