@@ -516,7 +516,7 @@ async function run() {
       }
     });
 
-    // Toggle Like (protected)
+
     app.post("/lessons/:id/like", verifyToken, async (req, res) => {
       try {
         const { id } = req.params;
