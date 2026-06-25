@@ -9,7 +9,6 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const { createRemoteJWKSet, jwtVerify } = require('jose-cjs');
 dontenv.config();
 
-
 const uri = process.env.MONGODB_URI;
 
 const app = express();
